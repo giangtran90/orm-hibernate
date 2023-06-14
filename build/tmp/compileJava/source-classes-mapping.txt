@@ -1,5 +1,7 @@
 com/orm/model/Customer.java
  com.orm.model.Customer
+com/orm/initial/AppInit.java
+ com.orm.initial.AppInit
 com/orm/service/CustomerService.java
  com.orm.service.CustomerService
 com/orm/repository/CustomerRepository.java
@@ -10,7 +12,5 @@ com/orm/repository/impl/CustomerRepositoryImpl.java
  com.orm.repository.impl.CustomerRepositoryImpl
 com/orm/initial/AppConfig.java
  com.orm.initial.AppConfig
-com/orm/initial/AppInit.java
- com.orm.initial.AppInit
 com/orm/controller/CustomerController.java
  com.orm.controller.CustomerController

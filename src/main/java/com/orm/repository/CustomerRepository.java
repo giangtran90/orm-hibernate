@@ -9,4 +9,6 @@ import java.util.List;
 public interface CustomerRepository {
     List<Customer> findAll();
     void save(Customer customer);
+    public Customer findById(Long id);
+    public boolean remove(Long id);
 }

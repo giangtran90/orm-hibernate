@@ -20,4 +20,14 @@ public class CustomerServiceImpl implements CustomerService {
     public void save(Customer customer) {
         customerRepository.save(customer);
     }
+
+    @Override
+    public Customer findById(Long id) {
+        return customerRepository.findById(id);
+    }
+
+    @Override
+    public boolean remove(Long id) {
+        return customerRepository.remove(id);
+    }
 }

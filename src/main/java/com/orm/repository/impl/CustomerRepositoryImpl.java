@@ -21,7 +21,23 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void save(Customer customer) {
-        // luu thong tin ta dung methode persist
-        entityManager.persist(customer);
+        if (findById(customer.getId()) == null){
+            // luu thong tin ta dung methode persist
+            entityManager.persist(customer);
+        } else {
+            entityManager.merge(customer);
+        }
+    }
+
+    @Override
+    public Customer findById(Long id) {
+        if (id == null) return null;
+        return entityManager.find(Customer.class, id);
+    }
+
+    @Override
+    public boolean remove(Long id) {
+        entityManager.remove(findById(id));
+        return true;
     }
 }
