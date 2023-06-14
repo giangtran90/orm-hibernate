@@ -6,11 +6,11 @@ com/orm/repository/CustomerRepository.java
  com.orm.repository.CustomerRepository
 com/orm/service/impl/CustomerServiceImpl.java
  com.orm.service.impl.CustomerServiceImpl
+com/orm/repository/impl/CustomerRepositoryImpl.java
+ com.orm.repository.impl.CustomerRepositoryImpl
+com/orm/initial/AppConfig.java
+ com.orm.initial.AppConfig
 com/orm/initial/AppInit.java
  com.orm.initial.AppInit
 com/orm/controller/CustomerController.java
  com.orm.controller.CustomerController
-com/orm/initial/AppConfig.java
- com.orm.initial.AppConfig
-com/orm/repository/impl/CustomerRepositoryImpl.java
- com.orm.repository.impl.CustomerRepositoryImpl

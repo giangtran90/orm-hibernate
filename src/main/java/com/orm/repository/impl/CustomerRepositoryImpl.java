@@ -12,9 +12,16 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     // tiem EntityManager vao trong Repository
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public List<Customer> findAll() {
         TypedQuery<Customer> query = entityManager.createQuery("select c from Customer c", Customer.class);
         return query.getResultList();
+    }
+
+    @Override
+    public void save(Customer customer) {
+        // luu thong tin ta dung methode persist
+        entityManager.persist(customer);
     }
 }
