@@ -15,9 +15,11 @@ public class CustomerController {
     private CustomerService customerService;
 
     @RequestMapping("customers")
-    public String findAll(){
+    public ModelAndView findAll(){
         List<Customer> customerList = customerService.findAll();
-        return "";
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("customers", customerList);
+        return modelAndView;
     }
 
     // goi toi view create chua form
@@ -40,7 +42,7 @@ public class CustomerController {
 
     //Tham số @PathVariable int id lấy id của customer từ đường dẫn rồi gán vào biến id.
     //hàm customerService.findById(id) sẽ lấy customer theo id rồi truyền sang view edit.html
-    @GetMapping("edit/{id}")
+    @GetMapping("{id}/edit")
     public ModelAndView edit(@PathVariable Long id, Customer customer){
         ModelAndView modelAndView = new ModelAndView("edit");
         modelAndView.addObject("customer", customerService.findById(id));
@@ -54,7 +56,7 @@ public class CustomerController {
         customerService.save(customer);
         return modelAndView;
     }
-    @GetMapping("delete/{id}")
+    @GetMapping("{id}/delete")
     public ModelAndView delete(@PathVariable Long id, Customer customer){
         ModelAndView modelAndView = new ModelAndView("delete");
         modelAndView.addObject("customer", customerService.findById(id));
@@ -67,6 +69,14 @@ public class CustomerController {
         ModelAndView modelAndView = new ModelAndView("create");
         modelAndView.addObject("customer", new Customer());
         customerService.remove(customer.getId());
+        return modelAndView;
+    }
+
+    //
+    @GetMapping("{id}/view")
+    public ModelAndView view(@PathVariable Long id, Customer customer){
+        ModelAndView modelAndView = new ModelAndView("info");
+        modelAndView.addObject("customer", customerService.findById(id));
         return modelAndView;
     }
 }
