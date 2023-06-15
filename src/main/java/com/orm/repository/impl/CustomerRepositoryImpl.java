@@ -33,6 +33,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public Customer findById(Long id) {
         if (id == null) return null;
         return entityManager.find(Customer.class, id);
+//        TypedQuery<Customer> query = entityManager.createNamedQuery("FIND_CUSTOMER_BY_ID", Customer.class).setParameter("id", id);
+//        return query.getSingleResult();
     }
 
     @Override

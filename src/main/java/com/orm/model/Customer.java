@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "customers")
+@NamedQuery(name = "FIND_CUSTOMER_BY_ID", query = "from Customer where id = :id")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
