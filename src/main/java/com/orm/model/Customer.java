@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "customers")
-@NamedQuery(name = "FIND_CUSTOMER_BY_ID", query = "from Customer where id = :id")
+// co 2 cach viet de truyen parameter la :id hoac ?0(vi tri)
+//@NamedQuery(name = "FIND_CUSTOMER_BY_ID", query = "from Customer where id = :id")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

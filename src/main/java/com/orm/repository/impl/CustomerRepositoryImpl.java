@@ -2,19 +2,20 @@ package com.orm.repository.impl;
 
 import com.orm.model.Customer;
 import com.orm.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 public class CustomerRepositoryImpl implements CustomerRepository {
     // tiem EntityManager vao trong Repository
-    @PersistenceContext
+//    @PersistenceContext
+    @Autowired
     private EntityManager entityManager;
 
     @Override
     public List<Customer> findAll() {
+        // dung truy van dong
         TypedQuery<Customer> query = entityManager.createQuery("select c from Customer c", Customer.class);
         return query.getResultList();
     }
@@ -22,8 +23,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void save(Customer customer) {
         if (findById(customer.getId()) == null){
-            // luu thong tin ta dung methode persist
+            // C1: luu thong tin ta dung methode persist
+            entityManager.getTransaction().begin();
             entityManager.persist(customer);
+            // test thu rollback
+//            if(true){
+//                entityManager.getTransaction().rollback();
+//                entityManager.getTransaction().begin();
+//            }
+            entityManager.getTransaction().commit();
         } else {
             entityManager.merge(customer);
         }
